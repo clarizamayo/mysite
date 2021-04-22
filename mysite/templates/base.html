@@ -1,0 +1,19 @@
+<!-- mysite/templates/base.html -->
+
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <p>1st View</p>
+<head>
+    <title>{% block title %}{% endblock %}</title>
+    <link href="{% static 'css/base.css' %}" rel="stylesheet">
+</head>
+
+<body>
+    <div id="content">
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+
+</html>
