@@ -12,7 +12,7 @@ def index(request):
 
 # view using render()
 def index(request):
-    return render(request, 'base.html')
+    return render(request, 'index.html')
 
 def second(request):
-    return render(request, 'index.html')
+    return render(request, 'second.html')
