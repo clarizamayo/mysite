@@ -1,6 +1,6 @@
 from django.http import HttpResponse
-# from django.template import loader
 from django.shortcuts import render
+from .models import Person,Dog
 
 def index(request):
     return HttpResponse('Hello World')
@@ -14,5 +14,12 @@ def index(request):
 def index(request):
     return render(request, 'index.html')
 
-def second(request):
-    return render(request, 'second.html')
+def listing(request):
+    data = {
+        "people": Person.objects.all(),
+        "dogs":Dog.objects.all(),
+    }
+
+    # here we're passing the data to our template 
+    # we can use tags in our template to display our data
+    return render(request, "second.html",data)

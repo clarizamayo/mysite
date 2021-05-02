@@ -5,5 +5,9 @@
 {% block title %}index page{% endblock %}
 
 {% block content %}
-  <h1>2nd View</h1>
+  <h1>Models Information</h1>
+  {% for dog in dogs %}
+    <ul>{{ dog.person.first_name }} owns {{ dog.dog_name }} </ul>
+  {% endfor %}
+
 {% endblock %}
