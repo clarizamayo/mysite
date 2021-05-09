@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<table>
+	<tr>
+		<th>email</th>
+		<th>message</th>
+	</tr>
+{% for contact in contacts %}
+	<tr>
+		<td> {{ adoption.email }} </td>
+		<td> {{ adoption.message }} </td>
+	</tr>
+
+{% endfor %}
+
+</table>
+
+<form action="/contact/" method="post">
+	{% csrf_token %}
+	{{ form }}
+
+	<input type="submit" value="Submit">
+
+</form>
+{% endblock content %}
