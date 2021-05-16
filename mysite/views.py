@@ -4,6 +4,13 @@ from .models import Person,Dog
 from django.contrib.auth.models import User
 from .forms import UserForm, AdoptionForm
 from .models import Adoption
+from bokeh.plotting import figure, output_file, show
+from bokeh.embed import components
+from bokeh.models import ColumnDataSource
+
+from mysite.csv.chart import *
+from mysite.csv.operatiobs import *
+
 # def index(request):
 #     return HttpResponse('Hello World')
 
@@ -44,3 +51,8 @@ def listing(request):
     return render(request, "second.html",data)
 
 
+def chartpath(request):
+    df = chart_func()
+    script, div = components(df)
+
+    return render(request,'chart.html',context={'script':script, 'div':div})
