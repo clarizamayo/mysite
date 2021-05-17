@@ -6,10 +6,10 @@ from .forms import UserForm, AdoptionForm
 from .models import Adoption
 from bokeh.plotting import figure, output_file, show
 from bokeh.embed import components
-from bokeh.models import ColumnDataSource
-
-from mysite.csv.chart import *
-from mysite.csv.operatiobs import *
+from bokeh.models import ColumnDataSource, HoverTool
+from bokeh.palettes import Spectral6
+from .chart import chart_func
+from .wwii import wwii_func
 
 # def index(request):
 #     return HttpResponse('Hello World')
@@ -52,7 +52,14 @@ def listing(request):
 
 
 def chartpath(request):
-    df = chart_func()
-    script, div = components(df)
+    p = chart_func()
+    script, div = components(p)
 
-    return render(request,'chart.html',context={'script':script, 'div':div})
+    return render(request,'chart.html',{'script':script, 'div':div})
+
+
+def wwii(request):
+    p = wwii_func()
+    script, div = components(p)
+
+    return render(request,'chart_2.html',{'script':script, 'div':div})
